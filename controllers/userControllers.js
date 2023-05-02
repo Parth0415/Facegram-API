@@ -6,6 +6,7 @@ module.exports = {
       const users = await User.find();
       return res.json(users);
     } catch (err) {
+      console.log(err)
       return res.status(500).json(err);
     }
   },
@@ -27,6 +28,7 @@ module.exports = {
       const user = await User.create(req.body);
       res.json(user);
     } catch (err) {
+      console.log(err)
       res.status(500).json(err);
     }
   },
@@ -44,17 +46,55 @@ module.exports = {
   async updateUser(req,res){
     try{
         const user = await User. findOneAndUpdate(
-            {_id: req.params.userId}
+            {_id: req.params.userId},
+            {$set: req.body},
+            {runValidators:true, new: true}
+
         );
         if(!user){
             return res.status(404).json({message: "No user found with this id"});
             
         }
-        res.status(404).json({message: "User updated successfully"})
+        res.json({message: "User updated successfully"})
     }
     catch(err){
         res.ststus(500).json(err);
 
     }
+  },
+async addFriend(req,res){
+  try{
+    const user = await User.findOneAndUpdate(
+      {_id: req.params.userId},
+      {$push: {friends: req.params.friendId}},
+      {new : true}
+    )
+    if (!user) {
+      return res.status(404).json({ message: " No user found with this id"});
+    }
+    res.json({message: "Friend added successfully"})
+}
+  catch(err){
+res.status(500).json(err);
   }
+},
+async deleteFriend(req,res){
+  try{
+    const user = await User.findOneAndUpdate(
+      {_id: req.params.userId},
+      {$pull: {friends: req.params.friendId}},
+      {new: true}
+    )
+    if (!user) {
+      return res.status(404).json({message: "No friend found with this id"});
+    }
+    res.json({ message: "Friend deleted successfully"});
+  } catch(err){
+    res.status(500).json(err);
+  }
+}
+
+
+
+
 };

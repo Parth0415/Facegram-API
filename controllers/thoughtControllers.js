@@ -3,6 +3,7 @@ const { User, Thought } = require("../models");
 module.exports = {
   async getThoughts(req, res) {
     try {
+      // getting all thoughts from the database
       const thoughts = await Thought.find();
       return res.json(thoughts);
     } catch (err) {
@@ -51,7 +52,7 @@ module.exports = {
           .status(404)
           .json({ message: "No thought found with this id" });
       }
-      res.status(404).json({ message: "Thought deleted successfully" });
+      res.json({ message: "Thought deleted successfully" });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -68,7 +69,7 @@ module.exports = {
           .status(404)
           .json({ message: "No thought found with this id" });
       }
-      res.status(404).json({ message: "Thought updated successfully" });
+      res.json({ message: "Thought updated successfully" });
     } catch (err) {
       res.ststus(500).json(err);
     }
@@ -78,7 +79,7 @@ module.exports = {
         const thought = await Thought.findOneAndUpdate(
             {_id: req.params.thoughtId},
             {$push : {reactions: req.body}},
-            {new: true}
+            {runValidators: true, new: true}
         )
         if (!thought){
             return res.status(404).json({message: "No thought found with this id"});
@@ -95,8 +96,8 @@ module.exports = {
     try{
         const thought = await Thought.findOneAndUpdate(
             {_id: req.params.thoughtId},
-            {$pull : {reactions: {reactions: req.params.reactionId}}},
-            {new: true})
+            {$pull : {reactions: {reactionId: req.params.reactionId}}},
+            {runValidators: true, new: true})
 
     
     if(!thought){

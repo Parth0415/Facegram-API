@@ -30,7 +30,7 @@ node script.js
 
 ## Usage
 
-watch the [video demonstration](https://drive.google.com/file/d/1Jl_oRmZTzgZn1e8U5S7OEu9USlVjVll-/view)
+watch the [video demonstration](https://drive.google.com/file/d/1bDF_MQ49bFs86GsNMkY4Dq_AkFbVF4WR/view)
 
 ## Screenshot
 

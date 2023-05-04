@@ -42,7 +42,7 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: "No user found with this id" });
       }
-      res.status(404).json({message: "User deleted successfully"})
+      res.json({message: "User deleted successfully"})
     } catch (err) {
       res.status(500).json(err);
     }
@@ -64,7 +64,7 @@ module.exports = {
         res.json({message: "User updated successfully"})
     }
     catch(err){
-        res.ststus(500).json(err);
+        res.status(500).json(err);
 
     }
   },

@@ -16,14 +16,16 @@ The Facegram API is an social network web application where users can share thei
 ## Installation
 
 For installation, clone the GitHub repository [Facegram-API](https://github.com/Parth0415/Facegram-API).
-Then go to the file location, open file with the help of terminal and run the following command:
-```
-node index.js
-```
+Then go to the file location, open file with the help of terminal:
 
-To install dependencies, run the following command:
+ To install dependencies, run the following command:
 ```
 npm i
+```
+ 
+ After that run the following command:
+```
+node script.js
 ```
 
 ## Usage

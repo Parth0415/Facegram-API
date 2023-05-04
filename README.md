@@ -9,7 +9,6 @@ The Facegram API is an social network web application where users can share thei
 - [Installation](#installation)
 - [Usage](#usage)
 - [Screenshot](#screenshot)
-- [Test](#test)
 - [Contribution](#contribution)
 - [Questions](#questions)
 - [License](#license)
@@ -33,7 +32,7 @@ watch the [video demonstration]()
 
 ## Screenshot
 
-![Web Page Overview](./images/screenshot.png"Web Page Overview")
+![Web Page Overview](./images/screenshot.png?raw=true "Web Page Overview")
 
 
 ## Contribution
